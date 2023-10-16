@@ -27,10 +27,10 @@ gulp.task('copyHtml', async function(){
 });
 
 // Compile CNAME file
-gulp.task('copyCNAME', async function(){
-    return gulp.src('CNAME')
-            .pipe(gulp.dest('dist'))
-});
+// gulp.task('copyCNAME', async function(){
+//     return gulp.src('CNAME')
+//             .pipe(gulp.dest('dist'))
+// });
 
 // Optimize Images
 gulp.task('imageMin', async function() {
@@ -69,11 +69,11 @@ gulp.task('cacheBust', async function() {
             .pipe(gulp.dest('./dist/partials/'))
 });
 
-gulp.task('default', gulp.series('message','copyHtml','imageMin','copyCNAME','scripts','sass','webfonts','cacheBust'));
+gulp.task('default', gulp.series('message','copyHtml','imageMin','scripts','sass','webfonts','cacheBust'));
 
 gulp.task('watch', function(){
   gulp.watch('./src/html/**', gulp.series('copyHtml'));
-  gulp.watch('CNAME', gulp.series('copyCNAME'));
+  //gulp.watch('CNAME', gulp.series('copyCNAME'));
   gulp.watch('./src/assets/js/*', gulp.series('scripts'));
   gulp.watch('./src/assets/images/**', gulp.series('imageMin'));
   gulp.watch('./src/assets/sass/*.scss', gulp.series('sass'));
